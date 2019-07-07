@@ -21,11 +21,18 @@ export class Article {
     }
 
     domain(): string {
-        try {
-            const domainAndPath: string = this.link.split('//')[1];
-            return domainAndPath.split('/')[0];
-        } catch (err) {
-            return null;
+        if (this.link.indexOf('//') > -1) {
+            try {
+                const domainAndPath: string = this.link.split('//')[1];
+                return domainAndPath.split('/')[0];
+            } catch (err) {
+                return null;
+            }
+
         }
+        else {
+            return this.link;
+        }
+
     }
 }
