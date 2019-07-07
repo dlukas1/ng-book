@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-xs-12">
+    <img [src]='recipie.imagePath' 
+    alt='{{recipie.name}}' class="img-responsive" style="max-height: 200px">
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h1> {{recipie.name}} </h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary dropdown-toggle">
+        Manage recipie <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a href="#">Add ingredients</a></li>
+        <li><a href="#">Edit recipie</a></li>
+        <li><a href="#">Delete recipie</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+      {{recipie.description}}
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-xs-12">
+        {{recipie.ingredients}}
+      </div>
+    </div>

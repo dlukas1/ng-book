@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-success">New Recipie</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+<app-recipie-item *ngFor="let recipieEl of recipies" 
+[recipie]='recipieEl' (recipieSelected)='onRecipieSelected(recipieEl)'></app-recipie-item>
+    </div>
+</div>
