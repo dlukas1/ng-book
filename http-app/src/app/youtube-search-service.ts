@@ -1,8 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
-import {
-  HttpClient,
-  HttpRequest,
-  HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { map } from "rxjs/operators";
 import { Observable } from 'rxjs';
 import { SearchResult } from './search-result.model';
 
@@ -16,7 +14,7 @@ export class YouTubeSearchService {
     private http: HttpClient,
     @Inject(YOUTUBE_API_KEY) private apiKey: string,
     @Inject(YOUTUBE_API_URL) private apiUrl: string
-  ) {}
+  ) { }
 
   search(query: string): Observable<SearchResult[]> {
     const params: string = [
@@ -27,7 +25,7 @@ export class YouTubeSearchService {
       `maxResults=10`
     ].join('&');
     const queryUrl = `${this.apiUrl}?${params}`;
-    return this.http.get(queryUrl).map(response => {
+    return this.http.get(queryUrl).pipe(map(response => {
       return <any>response['items'].map(item => {
         // console.log("raw item", item); // uncomment if you want to debug
         return new SearchResult({
@@ -37,6 +35,6 @@ export class YouTubeSearchService {
           thumbnailUrl: item.snippet.thumbnails.high.url
         });
       });
-    });
+    }));
   }
 }
