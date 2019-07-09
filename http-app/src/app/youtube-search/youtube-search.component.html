@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="page-header">
+    <h1>Search YouTube</h1>
+    <img style="float: right" 
+      *ngIf="loading" src="../../assets/loading.gif">
+  </div>
+</div>
+<div class="row">
+  <div class="input-group input-group-lg col-md-12">
+    <searchbox (loading)="loading = $event"
+                (results)="updateResults($event)"></searchbox>
+  </div>
+</div>
+<div class="row">
+  <search-result
+  *ngFor="let result of results"
+  [result]="result"></search-result>
+</div>
