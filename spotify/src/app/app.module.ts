@@ -14,6 +14,8 @@ import { TrackComponent } from './track/track.component';
 
 
 import { SPOTIFY_PROVIDERS } from '../app/services/spotify-service';
+import { AccountComponent } from './account/account.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'search', pathMatch: 'full' },
@@ -29,7 +31,9 @@ const routes: Routes = [
     AlbumComponent,
     ArtistComponent,
     SearchComponent,
-    TrackComponent
+    TrackComponent,
+    AccountComponent,
+    LoginComponent
   ],
   imports: [BrowserModule,
     AppRoutingModule,
