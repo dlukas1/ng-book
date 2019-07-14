@@ -1,18 +1,18 @@
 <h1>Search</h1>
 
 <p>
-  <input type="text" #newquery value="query"
+  <input type="text" #newquery placeholder="query"
     (keydown.enter)="submit(newquery.value)">
   <button (click)="submit(newquery.value)">Search</button>
 </p>
 
 <div *ngIf="results">
-  <div *gnIf="!results.length">
+  <div *ngIf="!results.length">
     No tracks found for '{{query}}'
   </div>
   <div *ngIf="results.length">
     <h1>Results</h1>
-
+<!-- <pre>{{results|json}}</pre> -->
     <div class="row">
       <div class="col-sm-6 col-md-4" *ngFor="let t of results">
         <div class="thumbnail">
@@ -25,7 +25,7 @@
               </h3>
               <br>
               <p>
-                <a [routerLink]="['/albums', t.album.id]">
+                <a [routerLink]="['/tracks', t.album.id]">
                 {{t.album.name}} </a>
               </p>
             </div>
