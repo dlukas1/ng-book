@@ -1,3 +1,20 @@
-<p>
-  login works!
-</p>
+<form class='form*-inline' *ngIf='!authService.getUser()'>
+  <div class='form-group'>
+    <label for='user'>User: (type<em>user</em>)</label>
+    <input class='form-control' name='user' #user>
+  </div>
+  <div class='form-group'>
+    <label for='password'>Password: (type<em>password</em>)</label>
+    <input class='form-control' name='password' #password>
+  </div>
+  <a class='btn btn-default' (click)='login(user.value, password.value)'>Log in</a>
+</form>
+
+<div class="well" *ngIf='authService.getUser()'>
+  Logged n as <b>{{authService.getUser()}}</b>
+  <a href (click)='logout()'>Log Out</a>
+</div>
+
+<div class='alert alert-danger' role='alert' *ngIf='message'>
+  {{message}}
+</div>

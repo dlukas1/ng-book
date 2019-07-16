@@ -16,6 +16,8 @@ import { TrackComponent } from './track/track.component';
 import { SPOTIFY_PROVIDERS } from '../app/services/spotify-service';
 import { AccountComponent } from './account/account.component';
 import { LoginComponent } from './login/login.component';
+import { LoggedGuard } from './services/logged.guard';
+import { AUTH_PROVIDERS } from './services/auth.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'search', pathMatch: 'full' },
@@ -23,6 +25,8 @@ const routes: Routes = [
   { path: 'artists/:id', component: ArtistComponent },
   { path: 'tracks/:id', component: TrackComponent },
   { path: 'albums/:id', component: AlbumComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'protected', component: AccountComponent, canActivate: [LoggedGuard] },
 ];
 
 @NgModule({
@@ -43,8 +47,12 @@ const routes: Routes = [
   providers: [
     SPOTIFY_PROVIDERS,
     {provide: APP_BASE_HREF, useValue: '/'},
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    AUTH_PROVIDERS,
+    LoggedGuard
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+ }
