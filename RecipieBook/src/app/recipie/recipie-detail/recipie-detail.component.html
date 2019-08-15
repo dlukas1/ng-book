@@ -11,12 +11,12 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <div class="btn-group">
+    <div class="btn-group" appDropDown>
       <button type="button" class="btn btn-primary dropdown-toggle">
         Manage recipie <span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
-        <li><a href="#">Add ingredients</a></li>
+        <li><a click='onAddToShoppingList()' style="cursor: pointer">Add ingredients</a></li>
         <li><a href="#">Edit recipie</a></li>
         <li><a href="#">Delete recipie</a></li>
       </ul>
@@ -30,6 +30,10 @@
   </div>
   <div class="row">
       <div class="col-xs-12">
-        {{recipie.ingredients}}
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor='let ingredient of recipie.ingredients'>
+            {{ingredient.name}} - {{ingredient.amount}}
+          </li>
+        </ul>
       </div>
     </div>

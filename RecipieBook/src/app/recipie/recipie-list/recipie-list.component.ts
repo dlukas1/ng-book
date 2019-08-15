@@ -1,5 +1,6 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Recipie } from '../recipie.model';
+import { RecipieService } from 'src/app/services/recipie.service';
 
 @Component({
   selector: 'app-recipie-list',
@@ -8,19 +9,10 @@ import { Recipie } from '../recipie.model';
 })
 export class RecipieListComponent implements OnInit {
 
-  @Output() recipieWasSelected = new EventEmitter<Recipie>();
-
-  recipies: Recipie[] = [
-    new Recipie('1st test recipie', 'Grill salmon', 'https://hips.hearstapps.com/del.h-cdn.co/assets/18/11/2048x1024/landscape-1520957481-grilled-salmon-horizontal.jpg?resize=1200:*'),
-    new Recipie('2nd test recipie', 'Salmon baked', 'https://hips.hearstapps.com/del.h-cdn.co/assets/18/11/2048x1024/landscape-1520957481-grilled-salmon-horizontal.jpg?resize=1200:*')
-  ];
-  constructor() { }
+  recipies: Recipie[];
+  constructor(private recipieService: RecipieService) { }
 
   ngOnInit() {
+    this.recipies = this.recipieService.getRecepies();
   }
-
-  onRecipieSelected(recipie: Recipie){
-    this.recipieWasSelected.emit(recipie);
-  }
-
 }
