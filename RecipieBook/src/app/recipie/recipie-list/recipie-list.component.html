@@ -1,11 +1,20 @@
 <div class="row">
     <div class="col-xs-12">
-        <button class="btn btn-success">New Recipie</button>
+        <button class="btn btn-success" (click)='onNewRecipie()'>New Recipie</button>
     </div>
 </div>
-<div class="row">
-    <div class="col-xs-12">
-<app-recipie-item *ngFor="let recipieEl of recipies" 
-[recipie]='recipieEl'></app-recipie-item>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-6 col-md-4">
+                <app-recipie-item 
+                *ngFor="let recipieEl of recipies; let i = index" 
+                [recipie]='recipieEl'
+                [index]=i>
+            </app-recipie-item>
+        </div>
+        <div class="col-12 col-md-8">
+            <router-outlet></router-outlet>
+        </div>
     </div>
 </div>

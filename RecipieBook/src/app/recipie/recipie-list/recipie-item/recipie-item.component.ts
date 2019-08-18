@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Recipie } from '../../recipie.model'
-import { RecipieService } from 'src/app/services/recipie.service';
 
 @Component({
   selector: 'app-recipie-item',
@@ -10,14 +9,10 @@ import { RecipieService } from 'src/app/services/recipie.service';
 export class RecipieItemComponent implements OnInit {
 
   @Input() recipie: Recipie;
+  @Input() index: number;
   recipies: Recipie[] = [];
-  constructor(private recipieService: RecipieService) { }
+  constructor() { }
 
   ngOnInit() {
   }
-
-  onSelected(){
-    this.recipieService.recipieSelected.emit(this.recipie);
-  }
-
 }

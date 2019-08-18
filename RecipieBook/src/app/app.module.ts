@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import {Routes, RouterModule} from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -14,8 +13,10 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
 import { DropdownDirective } from './shared/dropdown.directive';
 import { RecipieService } from './services/recipie.service';
 import { ShoppingListService } from './services/shopping-list.service';
+import { RecipieStartComponent } from './recipie/recipie-start/recipie-start.component';
+import { RecipieEditComponent } from './recipie/recipie-edit/recipie-edit.component';
 
-const appRoutes: Routes = []
+
 
 
 @NgModule({
@@ -28,13 +29,14 @@ const appRoutes: Routes = []
     RecipieItemComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
-    DropdownDirective
+    DropdownDirective,
+    RecipieStartComponent,
+    RecipieEditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    RouterModule.forRoot(appRoutes)
+    FormsModule
   ],
   providers: [RecipieService, ShoppingListService],
   bootstrap: [AppComponent]

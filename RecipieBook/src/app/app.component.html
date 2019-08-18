@@ -1,8 +1,8 @@
-<app-header (featureSelected)="onNavigate($event)"></app-header>
-
+<app-header></app-header>
 <div class="container">
-  <div class="col-md-12">
-    <app-recipie *ngIf="loadedFeature === 'recipie'"></app-recipie>
-    <app-shopping-list *ngIf="loadedFeature !== 'recipie'"></app-shopping-list>
+  <div class="row">
+    <div class="col-md-12">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
